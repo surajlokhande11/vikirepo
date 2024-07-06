@@ -1,0 +1,20 @@
+services:          #default synxtax
+  frontendnginxfirst:        #naming convention for container
+    build: /root/myproject/nginx  #location of the docker file
+    ports:     #port mapping my container to host port 
+      - '8080:80'
+    container_name: nginxfrontendcontfirst  #providing name to container
+    volumes:   #mounting persistent volume of my host to container
+      - myapp:/usr/share/nginx/html/
+    network_mode:   #providing network mode
+        bridge
+  frontendnginxsecond:  #naming convention for another container
+    build: /root/myproject/nginx
+    ports:
+     - '8081:81'
+    container_name: nginxfrontendcontsecond
+    network_mode:
+        bridge
+volumes:   #creating volume
+  myapp:
+~       
